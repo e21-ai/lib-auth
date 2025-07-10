@@ -61,26 +61,35 @@ rand = "0.9.1"
 ### ✅ Verifying API Key (Client-Side)
 
 ```rust
-use lib_auth::generate_signing_key;
+use lib_auth::{generate_signing_key, get_verifying_key, verify_with_public_key, Signature, Signer};
 
-fn main() {
-    // Generate two signing keys
-    let key1 = generate_signing_key();
-    let key2 = generate_signing_key();
+fn test_sign_and_verify_message() {
+    // Generate a new signing key (private + public key)
+    let keypair = generate_signing_key();
 
-    // Convert keys to byte arrays
-    let bytes1 = key1.to_bytes();
-    let bytes2 = key2.to_bytes();
+    // The message to be signed
+    let message: &[u8] = b"This is a test of the tsunami alert system.";
 
-    // Check keys are different (extremely unlikely to be the same)
-    assert_ne!(bytes1, bytes2, "Two generated keys should not be identical");
+    // Sign the message with the private key
+    let signature: Signature = keypair.sign(message);
 
-    // Check keys are 32 bytes long
-    assert_eq!(bytes1.len(), 32, "Key1 length should be 32 bytes");
-    assert_eq!(bytes2.len(), 32, "Key2 length should be 32 bytes");
+    // Verify using the full keypair directly (from ed25519-dalek)
+    assert!(keypair.verify(message, &signature).is_ok());
 
-    println!("Generated two distinct 32-byte signing keys successfully.");
+    // Extract the public verifying key
+    let public_key = get_verifying_key(&keypair);
+
+    // Verify using your helper function with public key
+    let is_valid = verify_with_public_key(&public_key, message, &signature);
+    assert!(is_valid);
+
+    println!("✅ Signature verified successfully!");
 }
+
+fn main(){
+    test_sign_and_verify_message();
+}
+
 
 ```
 
