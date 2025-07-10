@@ -1,5 +1,4 @@
-
-# lib_auth
+[![Rust](https://github.com/e21-ai/lib-auth/actions/workflows/rust.yml/badge.svg)](https://github.com/e21-ai/lib-auth/actions/workflows/rust.yml)
 
 A lightweight Rust library for generating and verifying Ed25519 signatures on API keys or arbitrary messages.  
 Designed for secure license validation, stateless API keys, and offline verification in client apps (e.g., Tauri).
@@ -25,7 +24,7 @@ In your own `Cargo.toml`, choose a feature based on where you're using `lib_auth
 ### ✅ Client App (Verify Only)
 
 ```toml
-lib-auth = { git = "https://github.com/e21-ai/lib_auth.git" }
+lib-auth = { git = "ssh://github.com/e21-ai/lib-auth.git" }
 ````
 
 This includes only signature **verification** logic, safe for offline use in:
@@ -41,7 +40,8 @@ This includes only signature **verification** logic, safe for offline use in:
 ### 🔐 Server (Sign + Verify)
 
 ```toml
-lib-auth = { git = "https://github.com/e21-ai/lib_auth.git", features = ["server"] }
+lib-auth = { git = "ssh://github.com/e21-ai/lib-auth.git", features = ["server"] }
+
 ```
 
 Use this in your backend to:
