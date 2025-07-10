@@ -1,0 +1,19 @@
+[package]
+name = "lib-auth"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rand = "0.8"
+serde = { version = "1.0", features = ["derive"] }
+base64 = "0.21"
+thiserror = "2.0.12"
+rand_core = { version = "0.9.3", features = ["os_rng"] }
+ed25519-dalek = { version = "2.0", features = ["rand_core"] }
+
+
+[features]
+client = []  # Only verification code included
+server = []  # Full code including signing (private key stuff)
+default = ["client"]  # default to client-safe
+
