@@ -57,6 +57,26 @@ Use this in your backend to:
 ### ✅ Verifying API Key (Client-Side)
 
 ```rust
+use lib_auth::generate_signing_key;
+
+fn main() {
+    // Generate two signing keys
+    let key1 = generate_signing_key();
+    let key2 = generate_signing_key();
+
+    // Convert keys to byte arrays
+    let bytes1 = key1.to_bytes();
+    let bytes2 = key2.to_bytes();
+
+    // Check keys are different (extremely unlikely to be the same)
+    assert_ne!(bytes1, bytes2, "Two generated keys should not be identical");
+
+    // Check keys are 32 bytes long
+    assert_eq!(bytes1.len(), 32, "Key1 length should be 32 bytes");
+    assert_eq!(bytes2.len(), 32, "Key2 length should be 32 bytes");
+
+    println!("Generated two distinct 32-byte signing keys successfully.");
+}
 
 ```
 
