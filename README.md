@@ -36,29 +36,22 @@ This includes only signature **verification** logic, safe for offline use in:
 
 ---
 
-### 🔐 Server (Sign + Verify)
-
 ```toml
 lib-auth = { git = "ssh://github.com/e21-ai/lib-auth.git", features = ["server"] }
 
 ```
+
+---
+
+## 📚 Usage Example
+
+### ✅ Sign and Verify API Key
 
 Use this in your backend to:
 
 * Generate Ed25519 signing keys
 * Sign API keys or license tokens
 * Verify messages
-
----
-
-## 📚 Usage Examples
-```
-base64 = "0.22.1"
-lib-auth = { git = "ssh://github.com/e21-ai/lib-auth.git"}
-rand = "0.9.1"
-```
-
-### ✅ Sign and Verify API Key
 
 ```rust
 use lib_auth::{generate_signing_key, get_verifying_key, verify_with_public_key, Signature, Signer};
