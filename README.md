@@ -52,12 +52,9 @@ Use this in your backend to:
 ---
 
 ## 📚 Usage Examples
-
 ```
-[dependencies]
 base64 = "0.22.1"
-ed25519-dalek = "2.2.0"
-lib-auth = { git = "ssh://github.com/e21-ai/lib-auth.git" }
+lib-auth = { git = "ssh://github.com/e21-ai/lib-auth.git"}
 rand = "0.9.1"
 ```
 
@@ -90,6 +87,12 @@ fn main() {
 ---
 
 ### 🔐 Signing API Key (Server-Side)
+
+```
+base64 = "0.22.1"
+lib-auth = { git = "ssh://github.com/e21-ai/lib-auth.git", features = ["server"] }
+rand = "0.9.1"
+```
 
 ```rust
 use lib_auth::{Signer, generate_signing_key, get_verifying_key, verify_with_public_key};
