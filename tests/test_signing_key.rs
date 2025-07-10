@@ -1,3 +1,4 @@
+#![cfg(feature = "server")]
 #[cfg(test)]
 mod tests {
 
