@@ -1,5 +1,4 @@
-
-# lib_auth
+[![Rust](https://github.com/e21-ai/lib-auth/actions/workflows/rust.yml/badge.svg)](https://github.com/e21-ai/lib-auth/actions/workflows/rust.yml)
 
 A lightweight Rust library for generating and verifying Ed25519 signatures on API keys or arbitrary messages.  
 Designed for secure license validation, stateless API keys, and offline verification in client apps (e.g., Tauri).
