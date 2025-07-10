@@ -54,6 +54,14 @@ Use this in your backend to:
 
 ## 📚 Usage Examples
 
+```
+[dependencies]
+base64 = "0.22.1"
+ed25519-dalek = "2.2.0"
+lib-auth = { git = "ssh://github.com/e21-ai/lib-auth.git" }
+rand = "0.9.1"
+```
+
 ### ✅ Verifying API Key (Client-Side)
 
 ```rust
