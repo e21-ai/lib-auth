@@ -36,6 +36,8 @@ This includes only signature **verification** logic, safe for offline use in:
 
 ---
 
+### ✅ Server App (Sign and Verify)
+
 ```toml
 lib-auth = { git = "ssh://github.com/e21-ai/lib-auth.git", features = ["server"] }
 
