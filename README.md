@@ -92,8 +92,7 @@ fn main() {
 ### 🔐 Signing API Key (Server-Side)
 
 ```rust
-use lib_auth::{generate_signing_key, get_verifying_key, verify_with_public_key};
-use ed25519_dalek::Signer;
+use lib_auth::{Signer, generate_signing_key, get_verifying_key, verify_with_public_key};
 
 fn main() {
     // Generate a new Ed25519 signing key (includes private and public keys)
