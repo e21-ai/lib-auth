@@ -8,6 +8,7 @@ use rand::rngs::OsRng;
 pub use ed25519_dalek::{Signature, SigningKey, VerifyingKey, Signer,Verifier};
 
 ///  Signing key ~ Keypair, which includes both public and secret halves of an asymmetric key. 
+#[cfg(feature = "server")]
 pub fn generate_signing_key() -> SigningKey {
     SigningKey::generate(&mut OsRng)
 }
@@ -18,6 +19,7 @@ pub fn get_verifying_key(signing_key: &SigningKey) -> VerifyingKey {
 }
 
 /// Sign a message using the private signing key
+#[cfg(feature = "server")]
 pub fn sign_message(signing_key: &SigningKey, message: &[u8]) -> Signature {
     signing_key.sign(message)
 }
