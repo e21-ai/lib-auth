@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod tests {
-    use super::*;
+
     use lib_auth::generate_signing_key;
     
     #[test]
