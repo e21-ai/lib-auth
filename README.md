@@ -58,7 +58,7 @@ lib-auth = { git = "ssh://github.com/e21-ai/lib-auth.git"}
 rand = "0.9.1"
 ```
 
-### ✅ Verifying API Key (Client-Side)
+### ✅ Sign and Verify API Key
 
 ```rust
 use lib_auth::{generate_signing_key, get_verifying_key, verify_with_public_key, Signature, Signer};
@@ -90,44 +90,6 @@ fn main(){
     test_sign_and_verify_message();
 }
 
-
-```
-
----
-
-### 🔐 Signing API Key (Server-Side)
-
-```
-base64 = "0.22.1"
-lib-auth = { git = "ssh://github.com/e21-ai/lib-auth.git", features = ["server"] }
-rand = "0.9.1"
-```
-
-```rust
-use lib_auth::{Signer, generate_signing_key, get_verifying_key, verify_with_public_key};
-
-fn main() {
-    // Generate a new Ed25519 signing key (includes private and public keys)
-    let signing_key = generate_signing_key();
-
-    // The message to sign
-    let message = b"This is a test of the tsunami alert system.";
-
-    // Sign the message with the private key
-    let signature = signing_key.sign(message);
-
-    // Verify signature using the public key extracted from signing key
-    let public_key = get_verifying_key(&signing_key);
-    let is_valid = verify_with_public_key(&public_key, message, &signature);
-
-    assert!(is_valid, "Signature should be valid");
-
-    println!("Signature verification succeeded!");
-}
-
-```
-```
-Signature verification succeeded!
 ```
 ---
 
