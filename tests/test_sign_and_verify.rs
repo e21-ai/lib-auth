@@ -1,14 +1,14 @@
 #[cfg(test)]
 mod tests {
 
-    use lib_auth::verify_with_public_key;
-    use lib_auth::get_verifying_key;
-    use ed25519_dalek::Signer;
     use ed25519_dalek::Signature;
+    use ed25519_dalek::Signer;
     use lib_auth::generate_signing_key;
-
+    use lib_auth::get_verifying_key;
+    use lib_auth::verify_with_public_key;
 
     #[test]
+    #[cfg(feature = "server")]
     fn test_sign_and_verify_message() {
         // Generate a new keypair
         let keypair = generate_signing_key();

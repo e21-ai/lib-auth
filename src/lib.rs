@@ -4,6 +4,7 @@
 //! on API keys or other messages. This wraps `ed25519-dalek` for easy
 //! offline cryptographic license validation or secure messaging.
 
+#[cfg(feature = "server")]
 use rand::rngs::OsRng;
 pub use ed25519_dalek::{Signature, SigningKey, VerifyingKey, Signer,Verifier};
 
