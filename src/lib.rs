@@ -5,7 +5,7 @@
 //! offline cryptographic license validation or secure messaging.
 
 use rand::rngs::OsRng;
-use ed25519_dalek::{Signature, SigningKey, VerifyingKey, Signer,Verifier};
+pub use ed25519_dalek::{Signature, SigningKey, VerifyingKey, Signer,Verifier};
 
 ///  Signing key ~ Keypair, which includes both public and secret halves of an asymmetric key. 
 pub fn generate_signing_key() -> SigningKey {
