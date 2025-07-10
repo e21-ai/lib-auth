@@ -1,4 +1,3 @@
-[![Rust](https://github.com/e21-ai/lib-auth/actions/workflows/rust.yml/badge.svg)](https://github.com/e21-ai/lib-auth/actions/workflows/rust.yml)
 
 A lightweight Rust library for generating and verifying Ed25519 signatures on API keys or arbitrary messages.  
 Designed for secure license validation, stateless API keys, and offline verification in client apps (e.g., Tauri).
@@ -53,12 +52,9 @@ Use this in your backend to:
 ---
 
 ## 📚 Usage Examples
-
 ```
-[dependencies]
 base64 = "0.22.1"
-ed25519-dalek = "2.2.0"
-lib-auth = { git = "ssh://github.com/e21-ai/lib-auth.git" }
+lib-auth = { git = "ssh://github.com/e21-ai/lib-auth.git"}
 rand = "0.9.1"
 ```
 
@@ -92,9 +88,14 @@ fn main() {
 
 ### 🔐 Signing API Key (Server-Side)
 
+```
+base64 = "0.22.1"
+lib-auth = { git = "ssh://github.com/e21-ai/lib-auth.git", features = ["server"] }
+rand = "0.9.1"
+```
+
 ```rust
-use lib_auth::{generate_signing_key, get_verifying_key, verify_with_public_key};
-use ed25519_dalek::Signer;
+use lib_auth::{Signer, generate_signing_key, get_verifying_key, verify_with_public_key};
 
 fn main() {
     // Generate a new Ed25519 signing key (includes private and public keys)
